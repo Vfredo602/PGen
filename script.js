@@ -96,17 +96,49 @@ function passwordPromts() {
   );
   //check input to see it is 8-128 characters long
   if (lenghtOfPassword < 8) {
-    alert("Your password must be at least 8 characters long");
+    alert("Your password must be at least 8 characters long.");
+    return;
   }
   if (lenghtOfPassword > 128) {
-    alert("Your password must be less than 128 characters long");
+    alert("Your password must be less than 128 characters long.");
+    return;
   }
 
   // variable to ask user if they want to upperCase characters, and store the boolean value
-  var confirmUppercase = confirm("Do you want uppercase characters in your password?");
-  var confirmLowercase = confirm("Do you want lowercase characters in your password?");
-  var confirmSpecial = confirm("Do you want special characters in your password?");
-  var confirmNumber = confirm("Do you want numbers characters in your password?");
+  var confirmUppercase = confirm(
+    "Do you want uppercase characters in your password?"
+  );
+  var confirmLowercase = confirm(
+    "Do you want lowercase characters in your password?"
+  );
+  var confirmSpecial = confirm(
+    "Do you want special characters in your password?"
+  );
+  var confirmNumber = confirm(
+    "Do you want numbers characters in your password?"
+  );
+
+  //validate if user has chosen characters types
+
+  if (
+    confirmUppercase === false &&
+    confirmLowercase === false &&
+    confirmSpecial === false &&
+    confirmNumber === false
+  ) {
+    alert("You must select a character type.");
+    return;
+  }
+  //variable to store user input
+  var pwChoices = {
+    // create key value pairs for user input
+    lenghtOfPassword: lenghtOfPassword,
+    uppercase: confirmUppercase,
+    lowercase: confirmLowercase,
+    special: confirmSpecial,
+    number: confirmNumber,
+  };
+  return pwChoices;
 }
 
 // Assignment Code
@@ -121,3 +153,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+generatePassword.addEventListener('generatePassword')
