@@ -149,7 +149,47 @@ function randomize(array) {
   var randomArray = array[getIndex];
 }
 return randomArray;
-// Assignment Code
+
+//put together previous functions in the generatePassword function to create from user input
+function generatePassword() {
+  //variable to colllect user input from the passwordPromts function
+  var input = passwordPromts();
+  //Empty array to store the results and create the password 
+  var storage = [];
+   //Empty array to store the array to include in the password (the global arrays)
+   var possArray = [];
+    //Empty array to store the characters to include in the password e.g. with actual characters
+    var choiceArray = [];
+
+    //if statement to grab characters if the user has chosen them
+    if (userInput.uppercase) {
+      //linking the array to the possArrays array using concatENATION
+      passArrays = possArrays.concat(upperCaseChar);
+      charChoices.push(randomize(upperCaseChar))
+    }
+  
+    //lowercase character if statement
+    if (userInput.lowercase) {
+      possArrays = possArrays.concat(lowerCaseChar);
+    charChoices.push(randomize(lowerCaseChar));
+    }
+//finish IF statement
+
+//loop through the possArrays and selecting random characters for the password
+for (var i = 0; i < userInput.length; i++) {
+var possArray = randomize(possArray);
+storage.push(possArray);
+
+  }
+  // put at least one character fom the array chosen by the user.
+for (var i = 0; i < charChoices.length; i++) {
+  storage[i] = charChoices[i];
+}
+return storage.join('');
+
+}
+
+   
 
 var generateBtn = document.querySelector("#generate");
 
@@ -157,6 +197,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  
 }
 
 // Add event listener to generate button
