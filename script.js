@@ -1,4 +1,4 @@
-//Create variables to store characters types, and create global variables//
+//Create global variables to store characters types, and create global variables//
 var upperCaseChar = [
   "A",
   "B",
@@ -131,7 +131,7 @@ function passwordPromts() {
   }
   //variable to store user input
   var pwChoices = {
-    // create key value pairs for user input
+    // create key value pairs for user input (below are objects)
     lenghtOfPassword: lenghtOfPassword,
     uppercase: confirmUppercase,
     lowercase: confirmLowercase,
@@ -141,6 +141,14 @@ function passwordPromts() {
   return pwChoices;
 }
 
+//function to randomize the array from the global variables.
+function randomize(array) {
+  //create a variable to get a random index in the arrays (global variables of characters)
+  var randomIndex = Math.floor(Math.random() * array.length);
+  // Storing targeted indexes from the getIndex variable in another variable
+  var randomArray = array[getIndex];
+}
+return randomArray;
 // Assignment Code
 
 var generateBtn = document.querySelector("#generate");
@@ -153,4 +161,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-generatePassword.addEventListener('generatePassword')
+generatePassword.addEventListener("generatePassword");
