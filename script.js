@@ -88,7 +88,7 @@ var numChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 //function to get input by using promts for the characters types and lenghtofPassword//
 function passwordPromts() {
   //variable to grab and store user input and parse into an integer"
-  passwordText.value = password;
+ 
   var lenghtOfPassword = parseInt(
     prompt(
       "You must enter at least 8 characters and no more than 128 including special characters, a number and a capital letter"
@@ -146,60 +146,58 @@ function randomize(array) {
   //create a variable to get a random index in the arrays (global variables of characters)
   var randomIndex = Math.floor(Math.random() * array.length);
   // Storing targeted indexes from the getIndex variable in another variable
-  var randomArray = array[getIndex];
+  var randomArray = array[randomIndex];
+  return randomArray;
 }
-return randomArray;
+
 
 //put together previous functions in the generatePassword function to create from user input
 function generatePassword() {
   //variable to colllect user input from the passwordPromts function
-  var input = passwordPromts();
-  //Empty array to store the results and create the password 
+  var userInput = passwordPromts();
+  //Empty array to store the results and create the password
   var storage = [];
-   //Empty array to store the array to include in the password (the global arrays)
-   var possArray = [];
-    //Empty array to store the characters to include in the password e.g. with actual characters
-    var choiceArray = [];
+  //Empty array to store the array to include in the password (the global arrays)
+  var possArray = [];
+  //Empty array to store the characters to include in the password e.g. with actual characters
+  var choiceArray = [];
 
-    //if statement to grab characters if the user has chosen them
-    if (userInput.uppercase) {
-      //linking the array to the possArrays array using concatENATION
-      passArrays = possArrays.concat(upperCaseChar);
-      charChoices.push(randomize(upperCaseChar))
-    }
-  
-    //lowercase character if statement
-    if (userInput.lowercase) {
-      possArrays = possArrays.concat(lowerCaseChar);
+  //if statement to grab characters if the user has chosen them
+  if (userInput.uppercase) {
+    //linking the array to the possArrays array using concatENATION
+    passArrays = possArrays.concat(upperCaseChar);
+    charChoices.push(randomize(upperCaseChar));
+  }
+
+  //lowercase character if statement
+  if (userInput.lowercase) {
+    possArrays = possArrays.concat(lowerCaseChar);
     charChoices.push(randomize(lowerCaseChar));
-    }
-//finish IF statement
+  }
+  //finish IF statement
 
-//loop through the possArrays and selecting random characters for the password
-for (var i = 0; i < userInput.length; i++) {
-var possArray = randomize(possArray);
-storage.push(possArray);
-
+  //loop through the possArrays and selecting random characters for the password
+  for (var i = 0; i < userInput.length; i++) {
+    var possArray = randomize(possArray);
+    storage.push(possArray);
   }
   // put at least one character fom the array chosen by the user.
-for (var i = 0; i < charChoices.length; i++) {
-  storage[i] = charChoices[i];
+  for (var i = 0; i < charChoices.length; i++) {
+    storage[i] = charChoices[i];
+  }
+  return storage.join("");
 }
-return storage.join('');
-
-}
-
-   
 
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
+  function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  
+  passwordText.value = password;
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword());
 generatePassword.addEventListener("generatePassword");
+
